@@ -12,6 +12,7 @@ add_prog_1(char *host,int x, int y)
 {
 	CLIENT *clnt;
 	int  *result_1;
+	int *result_2;
 	num  add_1_arg;
 
 #ifndef	DEBUG
@@ -29,12 +30,20 @@ add_prog_1(char *host,int x, int y)
 	add_1_arg.a = x;
 	add_1_arg.b = y;
 	result_1 = add_1(&add_1_arg, clnt);
+	result_2 = sub_1(&add_1_arg, clnt);
 	if (result_1 == (int *) NULL) {
 		clnt_perror (clnt, "call failed");
 	}
 	else
 	{
 		printf("The sum of %d and %d is %d\n",x,y,*result_1);
+	}
+	if (*result_2 == (int *) NULL) {
+		clnt_perror (clnt, "call failed");
+	}
+	else
+	{
+		printf("The difference of %d and %d is %d\n",x,y,*result_2);
 	}
 #ifndef	DEBUG
 	clnt_destroy (clnt);

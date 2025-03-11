@@ -27,12 +27,18 @@ typedef struct num num;
 #define add 1
 extern  int * add_1(num *, CLIENT *);
 extern  int * add_1_svc(num *, struct svc_req *);
+#define sub 2
+extern  int * sub_1(num *, CLIENT *);
+extern  int * sub_1_svc(num *, struct svc_req *);
 extern int add_prog_1_freeresult (SVCXPRT *, xdrproc_t, caddr_t);
 
 #else /* K&R C */
 #define add 1
 extern  int * add_1();
 extern  int * add_1_svc();
+#define sub 2
+extern  int * sub_1();
+extern  int * sub_1_svc();
 extern int add_prog_1_freeresult ();
 #endif /* K&R C */
 
